@@ -1,11 +1,12 @@
-<?php include 'database.php' ?>
+<script src="tweets.js"><script>
 
-<h1>Ajax</h1>
-<pre>
-<?php
-  dropDatabase();
-  setupDatabase();
-  saveTask('New Thing', date('Y-m-d'),0);
-  // deleteTask(2);
-  var_dump( getTasks() );
-?>
+<form method="POST" class="container">
+
+  <div class="form-group">
+    <label for="tweet">Tweet</label>
+    <input type="text" name="tweet" class="form-control" />
+  </div>
+
+  <input type="submit" name="submit" value="Submit" class="btn btn-primary" />
+  
+</form>
