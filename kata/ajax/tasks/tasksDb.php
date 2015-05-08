@@ -75,8 +75,10 @@ function saveTask($task, $due_date, $complete=0)
 	try
 	{
 		// getDb()->exec("INSERT INTO tasks (task, complete, due_date) VALUES ('$task', $complete, '$due_date');");
-		$stmt = getDb()->prepare("INSERT INTO tasks (task, complete, due_date) VALUES (?, ?, ?);");
+		$db = getDb();
+		$stmt = $db->prepare("INSERT INTO tasks (task, complete, due_date) VALUES (?, ?, ?);");
 		$stmt->execute([$task, $complete, $due_date]);
+		return $db->lastInsertId();
 	}
 	catch(PDOException $e)
 	{
